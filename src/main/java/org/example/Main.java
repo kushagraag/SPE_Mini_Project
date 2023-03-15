@@ -5,9 +5,6 @@ import java.lang.Math;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        int a = 4, b = 5;
-        System.out.print(a + b);
 
         Scanner input = new Scanner(System.in);
 
@@ -53,7 +50,6 @@ public class Main {
             }
 
             System.out.println();
-            input.close();
         }
     }
 
