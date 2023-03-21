@@ -4,8 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-public class Calculator {
-    private static final Logger logger = LogManager.getLogger(Calculator.class);
+public class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int choice;
