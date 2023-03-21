@@ -1,75 +1,144 @@
 package org.example;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.lang.Math;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 public class Calculator {
-
+    private static final Logger logger = LogManager.getLogger(Calculator.class);
     public static void main(String[] args) {
-
-        Scanner input = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("Please choose a function:");
-            System.out.println("1. Square Root");
+        Scanner scan = new Scanner(System.in);
+        int choice;
+        double num,exp;
+        int fact_num;
+        System.out.println("Welcome to scientific calculator");
+        do{
+            System.out.println("Which operation would you lke to perform?");
+            System.out.println("1.Square Root");
             System.out.println("2. Factorial");
             System.out.println("3. Natural Logarithm");
-            System.out.println("4. Power Function");
-            System.out.println("0. Exit");
+            System.out.println("4. Power");
+            System.out.println("5. Exit from Calculator");
+            System.out.println("Enter your choice: ");
 
-            int choice = input.nextInt();
-            double num;
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter a number: ");
-                    num = input.nextDouble();
-                    System.out.println("Square root of " + num + " is " + squareRoot(num));
-                    break;
-                case 2:
-                    System.out.print("Enter a number: ");
-                    int n = input.nextInt();
-                    System.out.println("Factorial of " + n + " is " + factorial(n));
-                    break;
-                case 3:
-                    System.out.print("Enter a number: ");
-                    num = input.nextDouble();
-                    System.out.println("Natural logarithm of " + num + " is " + naturalLog(num));
-                    break;
-                case 4:
-                    System.out.print("Enter a base: ");
-                    double base = input.nextDouble();
-                    System.out.print("Enter an exponent: ");
-                    double exponent = input.nextDouble();
-                    System.out.println(base + " raised to the power of " + exponent + " is " + power(base, exponent));
-                    break;
-                case 0:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+            try{
+                choice = scan.nextInt();
+            }catch(InputMismatchException error){
+                System.out.println("Please enter correct choice.");
+                return;
             }
+            if(choice == 5){
+                System.out.println("Exiting from calculator....");
+                return;
+            }
+            else{
+                switch (choice){
+                    case 1:
+                        System.out.println("Square root option selected\n");
+                        System.out.println("Enter number: ");
+                        try{
+                            num = scan.nextDouble();
+                        }catch(InputMismatchException error){
+                            System.out.println("Invalid input entered .. please enter number");
+                            // Yet to add logger info
+                            logger.info("Invalid Input! Closing Application");
+                            return;
+                        }
+                        squareRoot(num);
+                        break;
 
-            System.out.println();
+                    case 2:
+                        System.out.println("Factorial option selected\n");
+                        System.out.println("Enter number: ");
+                        try{
+                            fact_num = scan.nextInt();
+                        }
+                        catch (InputMismatchException error){
+                            System.out.println("Invalid input entered. Please enter integer");
+                            // logger
+                            logger.info("Invalid Input! Closing Application");
+                            return;
+                        }
+                        factorial(fact_num);
+                        break;
+
+                    case 3:
+                        System.out.println("Natural Log option selected\n");
+                        System.out.println("Enter number: ");
+                        try{
+                            num = scan.nextDouble();
+                        }
+                        catch (InputMismatchException error){
+                            System.out.println("Invalid input entered.");
+                            // logger
+                            logger.info("Invalid Input! Closing Application");
+                            return;
+                        }
+                        naturalLog(num);
+                        break;
+
+                    case 4:
+                        System.out.println("Power option selected\n");
+                        System.out.println("Enter number: ");
+                        try{
+                            num = scan.nextDouble();
+                        }
+                        catch (InputMismatchException error){
+                            System.out.println("Invalid input entered.");
+                            // logger
+                            logger.info("Invalid Input! Closing Application");
+                            return;
+                        }
+                        System.out.println("Enter exponent");
+                        exp = scan.nextDouble();
+                        power(num,exp);
+                        break;
+
+                    default:
+                        System.out.println("Enter valid choice. Exiting from application");
+                        return;
+                }
+            }
+        }while(true);
+    }
+    public static double squareRoot(Double num){
+        double ans = Math.sqrt(num);
+        System.out.println("Square root of " + num +" is " + ans);
+        //yet to add logger info
+        logger.info("SquareRoot calculation");
+        return ans;
+    }
+    public static int factorial(int num){
+        int ans = 1;
+        if(num<0){
+            System.out.println("Number should be positive");
+            // logger
+            logger.info("Negative Number entered! - in Factorial function");
+            return 0;
         }
+        for(int i=1;i<=num;i++){
+            ans*=i;
+        }
+        System.out.println("Result is "+ans);
+        //logger
+        logger.info("Factorial calculation");
+        return ans;
     }
 
-        public static double squareRoot(double num) {
-            return Math.sqrt(num);
-        }
+    public static double naturalLog(double num){
+        double ans = Math.log(num);
+        // logger
+        logger.info("NaturalLog calculation");
+        System.out.println("The result is "+ans);
+        return ans;
+    }
 
-        public static int factorial(int num) {
-            if (num == 0) {
-                return 1;
-            } else {
-                return num * factorial(num - 1);
-            }
-        }
-
-        public static double naturalLog(double num) {
-            return Math.log(num);
-        }
-
-        public static double power(double base, double exponent) {
-            return Math.pow(base, exponent);
-        }
+    public static double power(double num,double exp){
+        double ans = Math.pow(num,exp);
+        System.out.println("The result is "+ans);
+        //logger
+        logger.info("Power calculation");
+        return ans;
+    }
 }

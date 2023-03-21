@@ -1,0 +1,8 @@
+21/Mar/2023:10:24:53 310 [Calculator.java] [INFO] org.example.Calculator - SquareRoot calculation
+21/Mar/2023:10:24:57 645 [Calculator.java] [INFO] org.example.Calculator - Factorial calculation
+21/Mar/2023:10:25:07 933 [Calculator.java] [INFO] org.example.Calculator - Power calculation
+21/Mar/2023:10:26:10 033 [Calculator.java] [INFO] org.example.Calculator - SquareRoot calculation
+21/Mar/2023:10:26:14 179 [Calculator.java] [INFO] org.example.Calculator - Factorial calculation
+21/Mar/2023:10:26:27 392 [Calculator.java] [INFO] org.example.Calculator - Factorial calculation
+21/Mar/2023:10:26:34 521 [Calculator.java] [INFO] org.example.Calculator - NaturalLog calculation
+21/Mar/2023:10:26:45 907 [Calculator.java] [INFO] org.example.Calculator - Power calculation
