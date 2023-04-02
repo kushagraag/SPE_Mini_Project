@@ -10,6 +10,7 @@ public class MainTest {
     public void factorialTruePositive() {
         assertEquals("Finding factorial of a number for True Positive", 120, main.factorial(5), DELTA);
         assertEquals("Finding factorial of a number for True Positive", 24, main.factorial(4), DELTA);
+        assertEquals("Finding factorial of a number for True Positive", 24, main.factorial(4), DELTA);
     }
 
     @Test

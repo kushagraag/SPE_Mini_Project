@@ -13,13 +13,12 @@ public class Main {
         int fact_num;
         System.out.println("Welcome to scientific calculator");
         do{
-            System.out.println("Which operation would you lke to perform?");
-            System.out.println("1.Square Root");
+            System.out.println("Choose function");
+            System.out.println("1. Square Root");
             System.out.println("2. Factorial");
             System.out.println("3. Natural Logarithm");
             System.out.println("4. Power");
             System.out.println("5. Exit from Calculator");
-            System.out.println("Enter your choice: ");
 
 
             try{
@@ -28,18 +27,13 @@ public class Main {
                 System.out.println("Please enter correct choice.");
                 return;
             }
-            if(choice == 5){
-                System.out.println("Exiting from calculator....");
-                return;
-            }
-            else{
-                switch (choice){
+                switch (choice) {
                     case 1:
                         System.out.println("Square root option selected\n");
                         System.out.println("Enter number: ");
-                        try{
+                        try {
                             num = scan.nextDouble();
-                        }catch(InputMismatchException error){
+                        } catch (InputMismatchException error) {
                             System.out.println("Invalid input entered .. please enter number");
                             // Yet to add logger info
                             logger.info("Invalid Input! Closing Application");
@@ -51,10 +45,9 @@ public class Main {
                     case 2:
                         System.out.println("Factorial option selected\n");
                         System.out.println("Enter number: ");
-                        try{
+                        try {
                             fact_num = scan.nextInt();
-                        }
-                        catch (InputMismatchException error){
+                        } catch (InputMismatchException error) {
                             System.out.println("Invalid input entered. Please enter integer");
                             // logger
                             logger.info("Invalid Input! Closing Application");
@@ -66,10 +59,9 @@ public class Main {
                     case 3:
                         System.out.println("Natural Log option selected\n");
                         System.out.println("Enter number: ");
-                        try{
+                        try {
                             num = scan.nextDouble();
-                        }
-                        catch (InputMismatchException error){
+                        } catch (InputMismatchException error) {
                             System.out.println("Invalid input entered.");
                             // logger
                             logger.info("Invalid Input! Closing Application");
@@ -81,10 +73,9 @@ public class Main {
                     case 4:
                         System.out.println("Power option selected\n");
                         System.out.println("Enter number: ");
-                        try{
+                        try {
                             num = scan.nextDouble();
-                        }
-                        catch (InputMismatchException error){
+                        } catch (InputMismatchException error) {
                             System.out.println("Invalid input entered.");
                             // logger
                             logger.info("Invalid Input! Closing Application");
@@ -92,14 +83,13 @@ public class Main {
                         }
                         System.out.println("Enter exponent");
                         exp = scan.nextDouble();
-                        power(num,exp);
+                        power(num, exp);
                         break;
 
                     default:
                         System.out.println("Enter valid choice. Exiting from application");
                         return;
                 }
-            }
         }while(true);
     }
     public static double squareRoot(Double num){
